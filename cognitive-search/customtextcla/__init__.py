@@ -104,6 +104,7 @@ def get_classifications (value):
     #sometimes the TA processing time will be longer, in that case we need to try again after a while. You can probably add a more sophisticated retry policy here
     if (dict['status']!='succeeded'):
         time.sleep(3)
+        jobid = dict['jobId']
         response = requests.get(endpoint+'/jobs/'+jobid, None, headers=header)
         #print ('response is: ', response.text)
         dict=json.loads(response.text)    
